@@ -177,11 +177,17 @@ def readFile(filepathname=''):
 def GetFileList(dir, fileList):
 
     l = os.listdir(u'../data/金融车辆最新截至数据2016-07-26/2016-07-26')
+    print l
     for e in l:
-        #print e.encode('utf-8')
+        # print e.encode('utf-8')
         if e.find('amap') != -1:
             continue;
-        fileList.append(dir.decode('utf-8')+"/"+e);
+
+        if not os.path.isfile(dir.decode('utf-8')+"/"+e):
+            continue
+
+        if e.find('txt') !=-1:
+            fileList.append(dir.decode('utf-8')+"/"+e);
     return fileList
 
 
