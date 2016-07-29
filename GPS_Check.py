@@ -186,7 +186,7 @@ def readFile(filepathname=''):
 
 
 
-#读取文件内容处理，
+
 def check_calculate_time(filepathname=''):
     ifile = open(filepathname,'r')
     calculateDate_old = '2016-01-01 00:00:00'
@@ -219,7 +219,6 @@ def check_calculate_time(filepathname=''):
     ofile.close();
 
 
-#读取文件内容处理，
 def check_gps_gprs(filepathname=''):
     ifile = open(filepathname,'r')
     calculateDate_old = '2016-01-01 00:00:00'
@@ -341,21 +340,22 @@ def readFileList():
         check_gps_gprs(e)
 
 
+#仅仅统计24小时没有上报的GPS和GPRS记录
 if __name__ == '__main__':
-    ofile = open('check_calculate_time.log','w')
-    ofile.close()
-    pass
+    # ofile = open('check_calculate_time.log','w')
+    # ofile.close()
+    # pass
     ofile = open('check_gps_gprs.log','w')
     ofile.write('\xEF\xBB\xBF');
 
     ofile.write("车牌号,deviceNo,GPRS丢失大于24小时次数,GPS丢失大于24小时次数\n")
     ofile.close()
     readFileList()
-    caltime = stringtoHour('2016-07-11 16:44:49')-stringtoHour('2016-07-11 16:46:48')
-    caltime = fabs(caltime)
-    print caltime
-    print calculateDriftGps(32.2342260178,118.772936386,32.0647340271,118.634438707,caltime)
-    # print distance(30.6357442057,104.080202019,30.634359278,104.077468276)
-    # print calcDistance(30.6357442057,104.080202019,30.634359278,104.077468276)
-    print calcDistance(32.2342260178,118.772936386,32.0647340271,118.634438707)/caltime
-    # print calculate_time.excludeDate('2016-04-08 14:27:39')
+    # caltime = stringtoHour('2016-07-11 16:44:49')-stringtoHour('2016-07-11 16:46:48')
+    # caltime = fabs(caltime)
+    # print caltime
+    # print calculateDriftGps(32.2342260178,118.772936386,32.0647340271,118.634438707,caltime)
+    # # print distance(30.6357442057,104.080202019,30.634359278,104.077468276)
+    # # print calcDistance(30.6357442057,104.080202019,30.634359278,104.077468276)
+    # print calcDistance(32.2342260178,118.772936386,32.0647340271,118.634438707)/caltime
+    # # print calculate_time.excludeDate('2016-04-08 14:27:39')

@@ -5,12 +5,23 @@ import math
 import json
 import os
 
-#4月20号的点直接抛弃
+
+
+
+#时间融合
+#
+#如果两个时间都正常，连续上传，则以positionDate为calculateDate
+#如果positionDate时间不变，receiveDate连续变化，则以receiveDate为calculateDate
+# 如果positionDate连续变化，receiveDate不变，则以positionDate为calculateDate
+#如果positionDate时间不变，receiveDate不变，记录信息报错。
+
 
 logfile = open('logs','w')
 
+
+#4月20号的点直接抛弃
 def excludeDate(date=''):
-    if cmp(date, '2016-04-20 00:00:00')<0:
+    if cmp(date, '2016-04-20 00:00:00')<0 or cmp(date, '2026-04-20 00:00:00')>0:
         logfile.write("date = "+date+ ' excludeDate True')
         return True
     else:
@@ -18,14 +29,7 @@ def excludeDate(date=''):
         return False
 
 
-
-
-
-
-
 def calculate_time(receiveDate_old,positionDate_old,receiveDate,positionDate):
-    pass
-
     if excludeDate(receiveDate_old) or excludeDate(positionDate_old) or excludeDate(receiveDate) or excludeDate(positionDate):
         # print '---',receiveDate_old,receiveDate,positionDate_old,positionDate
         logfile.write('error 5\n')
@@ -42,7 +46,6 @@ def calculate_time(receiveDate_old,positionDate_old,receiveDate,positionDate):
     elif positionDate == positionDate_old and receiveDate == receiveDate_old:
         logfile.write('error 4\n')
         return '0000-00-00 00:00:00'
-
 
 
 def sortFileContent():
@@ -64,11 +67,6 @@ def sortFileContent():
         for i in contentlist:
             ofile.write(i.split('value')[1])
         ofile.close()
-
-
-
-
-
 
 
 #读取文件内容处理，并且加入新的字段。
@@ -150,7 +148,7 @@ def GetFileList(dir,fileList,includefilename,excludefilename):
 #     return fileList
 
 
-#只保留原始数据，删除中间数据。
+#只保留原始数据，删除中间数据。待完成
 def initFile():
     pass
 
