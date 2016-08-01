@@ -335,22 +335,24 @@ def readFileList():
     #l = [u'../data/金融车辆最新截至数据2016-07-26/2016-07-26/苏A1CY82_20160420000000-20160726000000.txt.amap.sort.calculate_time']
     for e in l:
         print e
-        #readFile(e);
+        readFile(e);
         #check_calculate_time(e)
-        check_gps_gprs(e)
+        #check_gps_gprs(e)
 
 
 #仅仅统计24小时没有上报的GPS和GPRS记录
 if __name__ == '__main__':
+    pass
+    readFileList();
     # ofile = open('check_calculate_time.log','w')
     # ofile.close()
     # pass
-    ofile = open('check_gps_gprs.log','w')
-    ofile.write('\xEF\xBB\xBF');
-
-    ofile.write("车牌号,deviceNo,GPRS丢失大于24小时次数,GPS丢失大于24小时次数\n")
-    ofile.close()
-    readFileList()
+    # ofile = open('check_gps_gprs.log.csv','w')
+    # ofile.write('\xEF\xBB\xBF');
+    #
+    # ofile.write("车牌号,deviceNo,GPRS丢失大于24小时次数,GPS丢失大于24小时次数\n")
+    # ofile.close()
+    # readFileList()
     # caltime = stringtoHour('2016-07-11 16:44:49')-stringtoHour('2016-07-11 16:46:48')
     # caltime = fabs(caltime)
     # print caltime
